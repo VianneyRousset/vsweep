@@ -16,8 +16,5 @@ dev = [
 ]
 
 [build-system]
-build-backend = "setuptools.build_meta"
-requires = [
-    "setuptools >= 35.0.2",
-    "setuptools_scm >= 2.0.0, <3"
-]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
