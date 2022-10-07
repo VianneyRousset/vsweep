@@ -1,0 +1,23 @@
+[project]
+name = "vsweep"
+description = "An elegant way to perform sweeps."
+version = "0.1.0"
+authors = [
+  { name = "Vianney Rousset" }
+]
+dependencies = [
+  "numpy",
+  "adaptive"
+]
+
+[project.optional-dependencies]
+dev = [
+    "black",
+]
+
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = [
+    "setuptools >= 35.0.2",
+    "setuptools_scm >= 2.0.0, <3"
+]
