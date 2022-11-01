@@ -3,7 +3,7 @@ An elegant way to perform sweeps.
 
 ## Installation
 
-`pip3 install git+ssh://git@github.com/VianneyRousset/vsweep.git`
+`pip install git+https://github.com/VianneyRousset/vsweep.git`
 
 ## Usage
 
