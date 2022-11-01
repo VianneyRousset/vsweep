@@ -1,6 +1,12 @@
 # vsweep
 An elegant way to perform sweeps.
 
+## Installation
+
+`pip3 install git+ssh://git@github.com/VianneyRousset/vsweep.git`
+
+## Usage
+
 ```python
 from vsweep import LinearSweep, LogSweep, AdaptiveSweep
 
