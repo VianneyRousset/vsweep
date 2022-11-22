@@ -39,7 +39,7 @@ class VectorSweep(Sweep):
         vector = self.vector
 
         if self.roundtrip:
-            values = list(iterable)
+            values = list(vector)
             vector = chain(values[::1], values[::-1])
 
         # repeat the vector for each pass
@@ -75,6 +75,24 @@ class VectorSweep(Sweep):
 
         return total
 
+    def __repr__(self):
+
+        vmin = min(self.vector)
+        vmax = max(self.vector)
+        nsteps = len(self.vector)
+
+        opts = [f'{nsteps} steps']
+
+        if self.roundtrip:
+            opts = opts + ['roundtrip']
+
+        if self.npasses > 1:
+            opts = opts + [f'{self.npasses} passes']
+
+        opts = ', '.join(opts)
+
+        return f'<{self.__class__.__name__} [{vmin:.2g}, {vmax:.2g}] ({opts})>'
+
 
 class LinearSweep(VectorSweep):
 
@@ -84,7 +102,7 @@ class LinearSweep(VectorSweep):
 
         # save previous step result
         if step_size is not None:
-            nsteps = int(round(abs((stop - start) / stepsize))) + 1
+            nsteps = int(round(abs((stop - start) / step_size))) + 1
 
         vector = np.linspace(start, stop, nsteps)
 

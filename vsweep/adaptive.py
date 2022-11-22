@@ -12,13 +12,13 @@ class AdaptiveSweep(Sweep):
 
     '''Dynamicly evaluated parameter step values base on the adaptive lib.'''
 
-    def __init__(self, start, stop, npoints, *args, **kwargs):
+    def __init__(self, start, stop, nsteps, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
 
         self.start = start
         self.stop = stop
-        self.npoints = npoints
+        self.nsteps = nsteps
         self._learner = None
         self._step = None
 
@@ -48,17 +48,21 @@ class AdaptiveSweep(Sweep):
         if self._step is not None:
             self._learner.tell(self._step.x, self._step.y)
 
-        if self._learner.npoints >= self.npoints:
+        if self._learner.nsteps >= self.nsteps:
             raise StopIteration()
 
         self._step = SweepStep(
             x=self._learner.ask(1)[0][0],
-            step_number=self._learner.npoints,
-            total=self.npoints,
+            step_number=self._learner.nsteps,
+            total=self.nsteps,
         )
 
         # may change x and y
         return self._step
 
     def __len__(self):
-        return self.npoints
+        return self.nsteps
+
+    def __repr__(self):
+        return (f'<{self.__class__.__name__} [{self.start:.2g}, '
+                + f'{self.stop:.2g}] ({self.nsteps} steps)>')

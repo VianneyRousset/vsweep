@@ -44,6 +44,10 @@ class Sweep(ABC):
     def __next__(self):
         raise NotImplementedError()
 
+    @abstractmethod
+    def __repr__(self):
+        raise NotImplementedError()
+
 
 class SweepStep:
 
