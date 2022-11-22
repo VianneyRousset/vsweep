@@ -10,7 +10,7 @@ from itertools import chain, repeat
 
 class AdaptiveSweep(Sweep):
 
-    '''Dynamicly evaluated parameter step values base on the adaptive lib.'''
+    """Dynamicly evaluated parameter step values base on the adaptive lib."""
 
     def __init__(self, start, stop, nsteps, *args, **kwargs):
 
@@ -30,7 +30,6 @@ class AdaptiveSweep(Sweep):
         return SweepResult(*data.T)
 
     def __iter__(self):
-
         def nope(x):
             pass
 
@@ -64,5 +63,7 @@ class AdaptiveSweep(Sweep):
         return self.nsteps
 
     def __repr__(self):
-        return (f'<{self.__class__.__name__} [{self.start:.2g}, '
-                + f'{self.stop:.2g}] ({self.nsteps} steps)>')
+        return (
+            f"<{self.__class__.__name__} [{self.start:.2g}, "
+            + f"{self.stop:.2g}] ({self.nsteps} steps)>"
+        )

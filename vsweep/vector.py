@@ -9,9 +9,9 @@ from itertools import chain, repeat
 
 class VectorSweep(Sweep):
 
-    '''
+    """
     Sweep with Fixed x values.
-    '''
+    """
 
     def __init__(self, vector, roundtrip=False, npasses=1, *args, **kwargs):
 
@@ -58,9 +58,10 @@ class VectorSweep(Sweep):
 
         n, x = next(self._iterator)
         self._step = SweepStep(
-            x = x,
-            step_number = n, total = len(self),
-            elapsed_time = self.get_elapsed_time(),
+            x=x,
+            step_number=n,
+            total=len(self),
+            elapsed_time=self.get_elapsed_time(),
         )
 
         # may change x and y
@@ -81,22 +82,22 @@ class VectorSweep(Sweep):
         vmax = max(self.vector)
         nsteps = len(self.vector)
 
-        opts = [f'{nsteps} steps']
+        opts = [f"{nsteps} steps"]
 
         if self.roundtrip:
-            opts = opts + ['roundtrip']
+            opts = opts + ["roundtrip"]
 
         if self.npasses > 1:
-            opts = opts + [f'{self.npasses} passes']
+            opts = opts + [f"{self.npasses} passes"]
 
-        opts = ', '.join(opts)
+        opts = ", ".join(opts)
 
-        return f'<{self.__class__.__name__} [{vmin:.2g}, {vmax:.2g}] ({opts})>'
+        return f"<{self.__class__.__name__} [{vmin:.2g}, {vmax:.2g}] ({opts})>"
 
 
 class LinearSweep(VectorSweep):
 
-    '''Evenly distributed steps in a linear space.'''
+    """Evenly distributed steps in a linear space."""
 
     def __init__(self, start, stop, nsteps=None, step_size=None, *args, **kwargs):
 
@@ -111,7 +112,7 @@ class LinearSweep(VectorSweep):
 
 class LogSweep(VectorSweep):
 
-    '''Evenly distributed steps in a logarithmic space.'''
+    """Evenly distributed steps in a logarithmic space."""
 
     def __init__(self, start, stop, nsteps, *args, **kwargs):
 
